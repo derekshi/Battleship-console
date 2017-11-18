@@ -11,7 +11,7 @@ public class BattleField {
     private List<Integer> rowLabel;
     private List<String> fieldArea;
     private Map<Integer, Ship> occupied = new HashMap<>();
-    private Map<Integer, Boolean> randomed = new HashMap<>();
+    private Set<Integer> randomed = new HashSet<>();
 
     public BattleField(int col, int row) {
         this.col = col;
@@ -49,12 +49,12 @@ public class BattleField {
 
         Random random = new Random();
         int area = random.nextInt(this.endArea + 1);
-        while (randomed.containsKey(area)) {
+        while (randomed.contains(area)) {
             area = random.nextInt(this.endArea + 1);
         }
 
-        randomed.put(area, true);
-
+        randomed.add(area);
+        System.out.println(String.format("random area: %d", area));
         return area2Label(area);
     }
 
@@ -69,7 +69,7 @@ public class BattleField {
             if (colIndex < 0 || rowIndex < 0) {
                 throw new RuntimeException(String.format("Invalid label %s", label));
             }
-            return rowIndex * this.row + colIndex;
+            return rowIndex * this.col + colIndex;
         } catch (NumberFormatException ex) {
             throw new RuntimeException(String.format("Invalid label %s", label));
         }
@@ -81,7 +81,7 @@ public class BattleField {
             return null;
         }
 
-        int colIndex = area % this.row;
+        int colIndex = area % this.col;
         int rowIndex = (int) Math.floor(area / this.col);
         return colLabel.get(colIndex) + rowLabel.get(rowIndex);
     }
@@ -192,6 +192,8 @@ public class BattleField {
                         allocated.add(rn - j);
                     }
                 }
+            } else {
+                found = false;
             }
 
             if (found) {
@@ -223,6 +225,8 @@ public class BattleField {
                         allocated.add(rn + j);
                     }
                 }
+            } else {
+                found = false;
             }
 
             if (found) {
@@ -262,6 +266,8 @@ public class BattleField {
                         allocated.add(rn - j * this.col);
                     }
                 }
+            } else {
+                found = false;
             }
 
             if (found) {
@@ -294,6 +300,8 @@ public class BattleField {
                         allocated.add(rn + j * this.col);
                     }
                 }
+            } else {
+                found = false;
             }
 
             if (found) {
@@ -306,7 +314,7 @@ public class BattleField {
 
     void displayField() {
         System.out.println("----- Battle Field Layout -----");
-
+        // System.out.println(this.fieldArea);
         // start with -1 as index so that we can print out column and row labels
         for(int i = -1; i < row; i++) {
             for(int j = -1; j < col; j++) {
