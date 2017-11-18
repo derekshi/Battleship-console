@@ -26,7 +26,7 @@ public class Game {
         computer = new ComputerPlayer();
         computer.setBattleField(new BattleField(BattleFieldCol, BattleFieldRow));
         computer.addShips(generateShips());
-        computer.field.displayField();
+//        computer.field.displayField();
 
         System.out.println("Please enter your name to start game: ");
         //Ask for user name
