@@ -43,7 +43,7 @@ public class BattleField {
     }
 
     String getRandomAreaLabel() {
-        if (randomed.size() >= this.endArea) {
+        if (randomed.size() > this.endArea) {
             throw new RuntimeException("No more random labels can be generated. Please start over.");
         }
 
@@ -54,7 +54,6 @@ public class BattleField {
         }
 
         randomed.add(area);
-        System.out.println(String.format("random area: %d", area));
         return area2Label(area);
     }
 

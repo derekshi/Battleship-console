@@ -10,7 +10,7 @@ public class Game {
     private Player computer;
     private boolean endGame = false;
 
-    private static final int totalRounds = 5;
+    private static final int totalRounds = 50;
     private static Scanner input = new Scanner(System.in);
 
     private static final int BattleFieldCol = 10;
