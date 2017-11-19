@@ -13,8 +13,8 @@ public class Game {
     private static final int totalRounds = 5;
     private static Scanner input = new Scanner(System.in);
 
-    private static final int BattleFieldCol = 5;
-    private static final int BattleFieldRow = 5;
+    private static final int BattleFieldCol = 10;
+    private static final int BattleFieldRow = 10;
     private static final int[] ShipSizes = {2, 3, 4, 5};
 
     Game() {
