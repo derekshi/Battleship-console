@@ -182,9 +182,9 @@ public class BattleField {
                 }
             }
 
-            if (rest > 0 && rn % this.col - rest >= 0) {
+            if (rest > 0) {
                 for (int j = 1; j <= rest; j ++) {
-                    if (this.occupied.containsKey(rn - j)) {
+                    if (this.occupied.containsKey(rn - j) || rn % this.col - j < 0) {
                         allocated.clear();
                         found = false;
                         break;
@@ -192,8 +192,6 @@ public class BattleField {
                         allocated.add(rn - j);
                     }
                 }
-            } else {
-                found = false;
             }
 
             if (found) {
@@ -215,9 +213,9 @@ public class BattleField {
                 }
             }
 
-            if (rest > 0 && rn % this.col + rest < this.col) {
+            if (rest > 0) {
                 for (int j = 1; j <= rest; j ++) {
-                    if (this.occupied.containsKey(rn + j)) {
+                    if (this.occupied.containsKey(rn + j) || rn % this.col + j >= this.col) {
                         allocated.clear();
                         found = false;
                         break;
@@ -225,8 +223,6 @@ public class BattleField {
                         allocated.add(rn + j);
                     }
                 }
-            } else {
-                found = false;
             }
 
             if (found) {
@@ -255,10 +251,10 @@ public class BattleField {
                 }
             }
 
-            if (rest > 0 && rn - rest * this.col >= 0) {
+            if (rest > 0) {
                 // change direction
                 for (int j = 1; j <= rest; j ++) {
-                    if (this.occupied.containsKey(rn - j * this.col)) {
+                    if (this.occupied.containsKey(rn - j * this.col) || rn - j * this.col < 0) {
                         allocated.clear();
                         found = false;
                         break;
@@ -266,8 +262,6 @@ public class BattleField {
                         allocated.add(rn - j * this.col);
                     }
                 }
-            } else {
-                found = false;
             }
 
             if (found) {
@@ -290,9 +284,9 @@ public class BattleField {
                 }
             }
 
-            if (rest > 0 && rn + rest * this.col <= this.endArea) {
+            if (rest > 0) {
                 for (int j = 1; j <= rest; j ++) {
-                    if (this.occupied.containsKey(rn + j * this.col)) {
+                    if (this.occupied.containsKey(rn + j * this.col) || rn + j * this.col > this.endArea) {
                         allocated.clear();
                         found = false;
                         break;
@@ -300,8 +294,6 @@ public class BattleField {
                         allocated.add(rn + j * this.col);
                     }
                 }
-            } else {
-                found = false;
             }
 
             if (found) {
