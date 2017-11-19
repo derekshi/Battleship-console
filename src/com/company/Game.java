@@ -23,17 +23,13 @@ public class Game {
     }
 
     void initPlayers() {
-        computer = new ComputerPlayer();
-        computer.setBattleField(new BattleField(BattleFieldCol, BattleFieldRow));
-        computer.addShips(generateShips());
+        computer = new ComputerPlayer(new BattleField(BattleFieldCol, BattleFieldRow), generateShips());
         computer.field.displayField();
 
         System.out.println("Please enter your name to start game: ");
         //Ask for user name
         String playerName = input.nextLine();
-        human = new HumanPlayer(playerName);
-        human.setBattleField(new BattleField(BattleFieldCol, BattleFieldRow));
-        human.addShips(generateShips());
+        human = new HumanPlayer(playerName, new BattleField(BattleFieldCol, BattleFieldRow), generateShips());
 
         System.out.println(String.format("\nWelcome %s, here is your battle field: ", playerName));
         human.field.displayField();

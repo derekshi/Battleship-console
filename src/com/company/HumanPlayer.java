@@ -1,12 +1,13 @@
 package com.company;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class HumanPlayer extends Player {
     private static Scanner input = new Scanner(System.in);
 
-    HumanPlayer(String name) {
-        super(name);
+    HumanPlayer(String name, BattleField field, List<Ship> ships) {
+        super(name, field, ships);
     }
 
     @Override

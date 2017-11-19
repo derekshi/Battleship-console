@@ -1,9 +1,11 @@
 package com.company;
 
+import java.util.List;
+
 public class ComputerPlayer extends Player {
 
-    ComputerPlayer() {
-        super("Computer");
+    ComputerPlayer(BattleField field, List<Ship> ships) {
+        super("Computer", field, ships);
     }
 
     @Override
