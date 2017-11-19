@@ -24,10 +24,11 @@ public class Game {
 
     void initPlayers() {
         computer = new ComputerPlayer(new BattleField(BattleFieldCol, BattleFieldRow), generateShips());
-        computer.field.displayField();
+        // TO peek opponent battlefield, un-comment this line
+        // computer.field.displayField();
 
         System.out.println("Please enter your name to start game: ");
-        //Ask for user name
+        // Ask for user name
         String playerName = input.nextLine();
         human = new HumanPlayer(playerName, new BattleField(BattleFieldCol, BattleFieldRow), generateShips());
 
